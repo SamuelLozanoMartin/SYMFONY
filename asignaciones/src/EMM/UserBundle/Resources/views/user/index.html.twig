@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h2>Usuarios</h2>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <tr>
+                    <th>Nombre</th>
+                    <th>primer apellido</th>
+                    <th>segundo apellido</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Updated</th>
+                    <th>Created</th>
+                    <th>Acciones</th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% if  user.role=="ROLE_ADMIN" %}
+                                <strong>Admin</strong>
+                            {% elseif user.role =="ROLE_USER" %}
+                                <strong>User</strong>
+                            {% endif %}
+                        </td>
+                        <td>{{ user.updatedAt|date('d-m-Y H:i') }}</td>
+                        <td>{{ user.createdAt|date('d-m-Y H:i') }}</td>
+                        <td>
+                            <a href="#" class="btn btn-success">Ver</a>
+                            <a href="#" class="btn btn-info">Editar</a>
+                            <a href="#" class="btn btn-danger">Borrar</a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

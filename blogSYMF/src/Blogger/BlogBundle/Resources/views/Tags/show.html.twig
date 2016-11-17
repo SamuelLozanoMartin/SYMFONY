@@ -1,0 +1,14 @@
+{# src/Blogger/BlogBundle/Resouces/views/Tags/show.html.twig #}
+
+
+
+
+{% block body %}
+    {% for blog in blogtags %}
+            <tr>
+                
+                <td>{{ blog.tags }}</td>
+                
+            </tr>
+        {% endfor %}
+{% endblock %}
